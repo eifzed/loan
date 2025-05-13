@@ -2,6 +2,7 @@ package api
 
 import (
 	"loan/internal/api/handlers"
+	"loan/internal/api/middleware"
 	"loan/internal/service"
 
 	"github.com/gorilla/mux"
@@ -9,6 +10,11 @@ import (
 
 func SetupRouter(loanService *service.LoanService) *mux.Router {
 	router := mux.NewRouter()
+
+	// middlewares
+	router.Use(middleware.Logger)
+	router.Use(middleware.ErrorHandler)
+	// in production use auth middleware to validate user using JWT
 
 	loanHandler := handlers.NewLoanHandler(loanService)
 	approvalHandler := handlers.NewApprovalHandler(loanService)
