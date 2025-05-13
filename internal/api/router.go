@@ -14,7 +14,6 @@ func SetupRouter(loanService *service.LoanService) *mux.Router {
 	// middlewares
 	router.Use(middleware.Logger)
 	router.Use(middleware.ErrorHandler)
-	// in production use auth middleware to validate user using JWT
 
 	loanHandler := handlers.NewLoanHandler(loanService)
 	approvalHandler := handlers.NewApprovalHandler(loanService)

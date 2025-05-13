@@ -1,0 +1,225 @@
+{
+	"info": {
+		"_postman_id": "1bbad9b3-aa72-4fc7-847d-0646af76b43c",
+		"name": "Loan Management API",
+		"description": "Postman collection for managing loans, approvals, investments, and disbursements.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13759116"
+	},
+	"item": [
+		{
+			"name": "Create Loan",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"borrower_id\": \"sample-borrower-id\",\n  \"principal_amount\": 10000.0,\n  \"rate\": 5.0,\n  \"roi\": 1.1\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/v1/loans",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"loans"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Loan by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/v1/loans/:id",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"loans",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "loan-id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Loans",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/v1/loans",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"loans"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Approve Loan",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"proof_picture_url\": \"https://example.com/proof.jpg\",\n  \"field_validator_id\": \"validator-id\",\n  \"approval_date\": \"2025-05-13\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/v1/loans/:id/approve",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"loans",
+						":id",
+						"approve"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "loan_20250513083848"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Investment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"investor_id\": \"investor-id-2\",\n  \"amount\": 4000.0\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/v1/loans/:id/investments",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"loans",
+						":id",
+						"investments"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "loan_20250513083848"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Investments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/v1/loans/:id/investments",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"loans",
+						":id",
+						"investments"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "loan_20250513083848"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Disburse Loan",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"agreement_document_url\": \"https://example.com/agreement.pdf\",\n  \"field_officer_id\": \"officer-id\",\n  \"disbursement_date\": \"2025-05-13\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/v1/loans/:id/disburse",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"loans",
+						":id",
+						"disburse"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "loan_20250513083848"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000"
+		}
+	]
+}
