@@ -3,6 +3,7 @@ package service
 import (
 	"context"
 	"errors"
+	"fmt"
 	"loan/internal/domain"
 	"loan/internal/repository"
 	"log"
@@ -99,6 +100,9 @@ func (s *LoanService) AddInvestment(ctx context.Context, loanID, investorID stri
 	if err != nil {
 		return nil, err
 	}
+	fmt.Println("investment id", investment.ID)
+
+	// inv_9ea12a9b-85f1-416b-8737-a9ba0c4e1165
 
 	if err := loan.AddInvestment(investment); err != nil {
 		return nil, err
